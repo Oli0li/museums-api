@@ -7,9 +7,9 @@ class Api::V1::MuseumsController < ApplicationController
   def search
     case
     when params["name"]
-      get_response_by_param(:name)
+      render json: Museum.find_by_param(:name, params["name"])
     when params["postcode"]
-      get_response_by_param(:postcode)
+      render json: Museum.find_by_param(:postcode, params["postcode"])
     when params["lat"] && params["long"]
       # call mapbox api to search for lat and long
       # select only results where properties[:category] includes "museum"
@@ -19,17 +19,6 @@ class Api::V1::MuseumsController < ApplicationController
       # create an instance of Museum
       # create a hash to show results as "postcode:" [museums]
       render json: { message: "yay!" }
-    end
-  end
-
-  private
-
-  def get_response_by_param(param)
-    @museum = Museum.find_by(param => params[param.to_s])
-    if @museum
-      render json: @museum
-    else
-      render json: { error: "Museum not found" }
     end
   end
 end
