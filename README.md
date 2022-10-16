@@ -1,24 +1,6 @@
-# README
+# Museum API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a work in progress.
+At the moment, users can:
+- see all museums in the database by visiting "/api/v1/museums"
+- search for a museum by name ("/api/v1/museums/search?name=MUSEUM_NAME") or postcode ("http://127.0.0.1:3000/api/v1/museums/search?postcode=POSTCODE")
