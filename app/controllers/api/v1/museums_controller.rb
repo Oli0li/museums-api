@@ -12,7 +12,7 @@ class Api::V1::MuseumsController < ApplicationController
     when params["name"]
       render json: Museum.find_by_param(:name, params["name"].titleize)
     when params["postcode"]
-      render json: Museum.find_by_param(:postcode, params["postcode"])
+      render json: Museum.find_by_param(:postcode, params["postcode"].upcase)
     when params["lat"] && params["long"]
       relevant_results = get_results_from_api(params["lat"], params["long"])
       final_results = format_results(relevant_results)
