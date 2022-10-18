@@ -10,7 +10,7 @@ class Api::V1::MuseumsController < ApplicationController
   def search
     case
     when params["name"]
-      render json: Museum.find_by_param(:name, params["name"])
+      render json: Museum.find_by_param(:name, params["name"].titleize)
     when params["postcode"]
       render json: Museum.find_by_param(:postcode, params["postcode"])
     when params["lat"] && params["long"]
